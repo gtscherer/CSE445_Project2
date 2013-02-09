@@ -16,6 +16,9 @@ namespace CSE445_Project2
          * You cannot use a queue for the buffer, which is a different data structure. 
          * Note: the semaphore will allow an agency to gain the right to write into the buffer.
          * But, the HotelSupplier can still read at the same time. Synchronization is also required.
+         * 
+         * thanks for adding the comments!
+         * 
          */
     }
 }

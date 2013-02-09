@@ -16,6 +16,14 @@ namespace CSE445_Project2
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            /* 
+             * Start Hotel Supplier Threads
+             * Create buffer classes
+             * Instantiate objects
+             * Create Threads
+             * Start Threads
+             */ 
+
         }
     }
 }

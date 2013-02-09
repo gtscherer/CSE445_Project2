@@ -19,5 +19,35 @@ namespace CSE445_Project2_Console
          * You must decide if these methods need to be synchronized. 
          * The instances creaded from this class are of the OrderObject.
          */
+        private int cardNo;
+        private int amount;
+        //private (thread name type or thread id type or string/int) senderId;
+        /*
+        This is commented out because I haven't determined what senderID's type is. 
+        public (thread-type) getID(){
+            return senderID;            //Possibly needs synchronization
+        }
+        
+        public void setID((thread-type) a){
+            senderID = a;            //Possibly needs synchronization
+        }
+        
+        */
+        public void setCardNo(int cardNumber)
+        {
+            cardNo = cardNumber;           //Possibly needs synchronization
+        }
+        public int getCardNo()
+        {
+            return cardNo;           //Possibly needs synchronization
+        }
+        public void setAmt(int amt)
+        {
+            amount = amt;           //Possibly needs synchronization
+        }
+        public int getAmt()
+        {
+            return amount;           //Possibly needs synchronization
+        }
     }
 }

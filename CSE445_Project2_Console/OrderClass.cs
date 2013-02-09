@@ -21,18 +21,15 @@ namespace CSE445_Project2_Console
          */
         private int cardNo;
         private int amount;
-        //private (thread name type or thread id type or string/int) senderId;
-        /*
-        This is commented out because I haven't determined what senderID's type is. 
-        public (thread-type) getID(){
-            return senderID;            //Possibly needs synchronization
+        private string senderId;
+
+        public string getID(){
+            return senderId;            //Possibly needs synchronization
         }
         
-        public void setID((thread-type) a){
-            senderID = a;            //Possibly needs synchronization
+        public void setID(string a){
+            senderId = a;            //Possibly needs synchronization
         }
-        
-        */
         public void setCardNo(int cardNumber)
         {
             cardNo = cardNumber;           //Possibly needs synchronization

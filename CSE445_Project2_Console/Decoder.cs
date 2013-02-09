@@ -75,10 +75,10 @@ namespace CSE445_Project2_Console
 
             int amt = Convert.ToInt32(temp2.ToString()); //Converts StringBuilder type to Int
             int cardNo = Convert.ToInt32(temp3.ToString());
-            /* This is commented out because I haven't determined what senderID's type is. 
-             (thread-type) senderID =  temp4.ToString();
-             s.setID(senderID);
-            */
+            
+            string senderID =  temp4.ToString();
+            s.setID(senderID);
+            
             s.setAmt(amt); //OrderClass object set() methods
             s.setCardNo(cardNo);
         }

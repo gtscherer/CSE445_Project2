@@ -33,10 +33,10 @@ namespace CSE445_Project2_Console
             temp.Append(" ");
             temp.Append(s.getCardNo().ToString());
             temp.Append(" ");
-            /* This is commented out because I haven't determined what senderID's type is. 
-             temp.Append(s.getID().toString()
-             temp.Append(" ");
-             */
+            /* This is commented out because I haven't determined what senderID's type is. */
+            temp.Append(s.getID());
+            temp.Append(" ");
+             
             order = temp.ToString();
             EncryptionService.ServiceClient serviceClient = new EncryptionService.ServiceClient();
             order = serviceClient.Encrypt(order);

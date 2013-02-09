@@ -8,7 +8,7 @@ namespace CSE445_Project2_Console
     class TravelAgency
     {
         /*
-         * Each travel agency is a thread instantiated from the same class (or the same method) in a class.
+         * (Instantiated from other Classes)Each travel agency is a thread instantiated from the same class (or the same method) in a class.
          * The TravelAgency's actions are event driven.
          * Each travel agency contains a call-back method (event handler) for the HotelSupplier to call when a price-cut event occurs.
          * The travel agency will calculate the number of rooms to order, for example, based on the need and the difference between the previous price and the current price.

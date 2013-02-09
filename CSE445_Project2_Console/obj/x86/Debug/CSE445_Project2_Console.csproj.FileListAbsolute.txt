@@ -1,0 +1,5 @@
+C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\CSE445_Project2_Console\bin\Debug\CSE445_Project2_Console.exe
+C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\CSE445_Project2_Console\bin\Debug\CSE445_Project2_Console.pdb
+C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\CSE445_Project2_Console\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\CSE445_Project2_Console\obj\x86\Debug\CSE445_Project2_Console.exe
+C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\CSE445_Project2_Console\obj\x86\Debug\CSE445_Project2_Console.pdb

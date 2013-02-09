@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSE445_Project2", "CSE445_Project2\CSE445_Project2.csproj", "{37E5CEBC-0BF9-4EBA-883E-6D6F35D686CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSE445_Project2_Console", "CSE445_Project2_Console\CSE445_Project2_Console.csproj", "{3EB233BC-4018-48FE-B874-D5BD90C0779D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,10 @@ Global
 		{37E5CEBC-0BF9-4EBA-883E-6D6F35D686CE}.Debug|x86.Build.0 = Debug|x86
 		{37E5CEBC-0BF9-4EBA-883E-6D6F35D686CE}.Release|x86.ActiveCfg = Release|x86
 		{37E5CEBC-0BF9-4EBA-883E-6D6F35D686CE}.Release|x86.Build.0 = Release|x86
+		{3EB233BC-4018-48FE-B874-D5BD90C0779D}.Debug|x86.ActiveCfg = Debug|x86
+		{3EB233BC-4018-48FE-B874-D5BD90C0779D}.Debug|x86.Build.0 = Debug|x86
+		{3EB233BC-4018-48FE-B874-D5BD90C0779D}.Release|x86.ActiveCfg = Release|x86
+		{3EB233BC-4018-48FE-B874-D5BD90C0779D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

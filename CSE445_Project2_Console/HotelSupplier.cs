@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace CSE445_Project2_Console
 {
@@ -17,5 +18,79 @@ namespace CSE445_Project2_Console
          * Before generating the first price, a time stamp must be saved.
          * Before thread terminates, the total time used will be calculated and saved.
          */
+
+        private PricingModel price_model;
+        private Int32 price;
+        public delegate void priceCutEvent(Int32 price);
+        public static event priceCutEvent priceCut;
+
+        public HotelSupplier()
+        {
+            // let's see
+            price_model = new PricingModel();
+
+            // the HotelSupplier will be active until 10 price cuts have been reached
+            for (Int32 i = 0; i < 11; )
+            {
+
+                // get random number to scale price
+                Random rand = new Random();
+                int randomNumber = rand.Next(0, 100);
+
+                // not sure whether we really would like to keep it this way
+                Int32 newPrice = price_model.scalePrice(randomNumber);
+                Console.WriteLine("New Price is {0}", newPrice);
+
+                // is there a lower price available?
+                if (newPrice < price)
+                {
+                    // there is at least a subscriber
+                    if (priceCut != null)
+                    {
+                        // emit / raise event to subscribers
+                        priceCut(price);
+                    }
+                    // increase the number of price cuts
+                    i++;
+                }
+                price = newPrice;
+
+
+                // not clear how orchestration should look like...
+
+            }
+        }
+        
+        public void setOrder(OrderClass[] orderTable) {
+
+            // get encoder - did we want to use a singleton here?
+            Decoder    d = new Decoder();
+            OrderClass order;
+            Thread[] thread = new Thread[orderTable.Length];
+
+            // decode all orders
+            for (int i = 0; i < orderTable.Length; ++i)
+            {
+
+            // set the order an decrypt
+            d.setOrder(orderTable[i].ToString());
+            
+            // get the decrypeted order as string
+            order = d.getOrder();
+
+            // need to call OrderProcessing
+            thread[i] = new Thread(new ParameterizedThreadStart(Worker));
+            thread[i].Start(order);
+
+            }
+
+        }
+
+        private static void Worker(object order) { 
+        
+
+
+        }
+
     }
 }

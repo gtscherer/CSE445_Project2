@@ -16,5 +16,17 @@ namespace CSE445_Project2_Console
          * You can implement the confirmation in different ways: you can use another buffer for the confirmation (with a buffer cell for each thread) so you don't have to consider the conflict among threads. 
          * However, you still need to coordinate the write and read between the producer and the consumer.
          */
+        public OrderProcessing()
+        { 
+        
+        }
+
+        static public void start()
+        {
+
+        }
+
+
+
     }
 }

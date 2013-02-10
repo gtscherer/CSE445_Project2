@@ -106,5 +106,10 @@ namespace CSE445_Project2_Console
 
         }
 
+
+        public static bool checkCard(int cardNo)
+        { 
+            return true;
+        }
     }
 }

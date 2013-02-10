@@ -26,8 +26,8 @@ namespace CSE445_Project2_Console
                 calculateTotal();
             }
             else
-            { 
-        
+            {
+                Console.WriteLine("Card Number {0} invalid ", order.getCardNo());
             }
 
         }
@@ -37,7 +37,16 @@ namespace CSE445_Project2_Console
 
             int cardNo = order.getCardNo();
 
-            return true;
+            if ((cardNo > 4999 && cardNo < 7001) ||
+               ( HotelSupplier.checkCard(cardNo) == true ))
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+            
         }
 
         private void calculateTotal()

@@ -46,5 +46,48 @@ namespace CSE445_Project2_Console
         {
             return amount;           //Possibly needs synchronization
         }
+
+        public override string ToString()
+        {
+            return "SenderId: " + getID() + " Card Number: " + getCardNo() + " Amount: " + getAmt();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            OrderClass o = obj as OrderClass;
+
+            if ((System.Object)o == null)
+                return false;
+
+
+            return (amount == o.getAmt()) && (cardNo == o.getCardNo()) && senderId.Equals(o.getID());
+        }
+
+        public static bool operator ==(OrderClass a, OrderClass b)
+        {
+            // If both are null, or both are same instance, return true.
+            if (System.Object.ReferenceEquals(a, b))
+            {
+                return true;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)a == null) || ((object)b == null))
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return (a.getAmt() == b.getAmt()) && (a.getCardNo() == b.getCardNo()) && a.getID().Equals(b.getID());
+        }
+
+        public static bool operator !=(OrderClass a, OrderClass b)
+        {
+            return !(a == b);
+        }
+
+
     }
 }

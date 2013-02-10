@@ -3,8 +3,15 @@ C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleA
 C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Debug\ConsoleAppPriceCut.exe
 C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Debug\ConsoleAppPriceCut.pdb
+<<<<<<< HEAD
 C:\Users\I815814\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\bin\Debug\ConsoleAppPriceCut.exe
 C:\Users\I815814\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\bin\Debug\ConsoleAppPriceCut.pdb
 C:\Users\I815814\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\I815814\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Debug\ConsoleAppPriceCut.exe
 C:\Users\I815814\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Debug\ConsoleAppPriceCut.pdb
+=======
+C:\Users\Vallalan\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\bin\Debug\ConsoleAppPriceCut.exe
+C:\Users\Vallalan\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\bin\Debug\ConsoleAppPriceCut.pdb
+C:\Users\Vallalan\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Debug\ConsoleAppPriceCut.exe
+C:\Users\Vallalan\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Debug\ConsoleAppPriceCut.pdb
+>>>>>>> 3772c7618b07853c1e43283584b40b531582ac45

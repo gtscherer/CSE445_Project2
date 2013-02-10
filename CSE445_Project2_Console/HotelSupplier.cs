@@ -29,6 +29,11 @@ namespace CSE445_Project2_Console
             // let's see
             price_model = new PricingModel();
 
+            // get start time
+            DateTime now = DateTime.Now;
+            Console.WriteLine(now);
+
+
             // the HotelSupplier will be active until 10 price cuts have been reached
             for (Int32 i = 0; i < 11; )
             {
@@ -59,6 +64,14 @@ namespace CSE445_Project2_Console
                 // not clear how orchestration should look like...
 
             }
+            // get start time
+            DateTime after = DateTime.Now;
+            Console.WriteLine(after);
+            long ticks = after.Ticks - now.Ticks;
+            double seconds = TimeSpan.FromTicks(ticks).TotalSeconds;
+            Console.WriteLine("Total runtime {0} seconds ", seconds);
+            
+            Console.ReadLine();
         }
         
         public void setOrder(OrderClass[] orderTable) {

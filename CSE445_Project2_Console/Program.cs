@@ -20,8 +20,10 @@ namespace CSE445_Project2_Console
             const int N = 3;
             HotelSupplier hotel = new HotelSupplier();
 
-            Console.WriteLine("does it work: " + testOrder());
-            Console.ReadLine();
+
+
+            //Console.WriteLine("does it work: " + testOrder());
+            //Console.ReadLine();
 
             
             /*

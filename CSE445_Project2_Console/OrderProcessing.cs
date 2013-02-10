@@ -50,8 +50,17 @@ namespace CSE445_Project2_Console
             amount = (double)order.getnoRooms() * order.getPrice() + tax + locationCharge;
             order.setAmt(amount);
 
+            // update order buffer
+            
+            // inform agency here - what approach will we choose?
+            // A) separate confirmation buffer?
+            // B) shall we use an event?
+
         }
 
-
+        public OrderClass getOrder()
+        {
+            return order;
+        }
     }
 }

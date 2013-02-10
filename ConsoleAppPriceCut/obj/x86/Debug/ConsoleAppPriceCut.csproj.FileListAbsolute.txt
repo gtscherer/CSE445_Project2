@@ -3,3 +3,7 @@ C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleA
 C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Debug\ConsoleAppPriceCut.exe
 C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Debug\ConsoleAppPriceCut.pdb
+C:\Users\Vallalan\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\bin\Debug\ConsoleAppPriceCut.exe
+C:\Users\Vallalan\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\bin\Debug\ConsoleAppPriceCut.pdb
+C:\Users\Vallalan\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Debug\ConsoleAppPriceCut.exe
+C:\Users\Vallalan\Documents\Visual Studio 2010\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Debug\ConsoleAppPriceCut.pdb

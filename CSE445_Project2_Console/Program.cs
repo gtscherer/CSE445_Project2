@@ -19,6 +19,11 @@ namespace CSE445_Project2_Console
              */
             const int N = 3;
             HotelSupplier hotel = new HotelSupplier();
+
+            Console.WriteLine("does it work: " + testOrder());
+            Console.ReadLine();
+
+            
             /*
             Thread hotelThread = new Thread(new ThreadStart(hotel.hotelFunc));
             hotelThread.Start();
@@ -32,6 +37,21 @@ namespace CSE445_Project2_Console
                 agencies[i].Start();
             }
             */
+        }
+
+        static Boolean testOrder()
+        {
+            OrderClass order = new OrderClass();
+            order.setAmt(123);
+            order.setID("test");
+            order.setCardNo(456418);
+
+            Encoder enc = new Encoder(order);
+            String encoded = enc.getOrder();
+            Decoder dec = new Decoder(encoded);
+
+            return order == dec.getOrder();
+
         }
     }
 }

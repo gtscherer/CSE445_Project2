@@ -13,7 +13,7 @@ namespace CSE445_Project2_Console
          * You can use a hard-coded table of the price in each week day, however you must make sure your model will allow the price to go up for some period of time and go down some other time.
          */
         private int[] priceTable;
-        public void PricingModel()
+        public PricingModel()
         {
             priceTable = new int[7];
             for (int i = 0; i < priceTable.Length; ++i)

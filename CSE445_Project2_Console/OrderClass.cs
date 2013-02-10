@@ -20,7 +20,9 @@ namespace CSE445_Project2_Console
          * The instances creaded from this class are of the OrderObject.
          */
         private int cardNo;
-        private int amount;
+        private double amount;
+        private int noRooms;
+        private double price;
         private string senderId;
 
         public string getID(){
@@ -38,11 +40,27 @@ namespace CSE445_Project2_Console
         {
             return cardNo;           //Possibly needs synchronization
         }
-        public void setAmt(int amt)
+        public void setnoRooms(int noRooms)
+        {
+            this.noRooms = noRooms;           //Possibly needs synchronization
+        }
+        public int getnoRooms()
+        {
+            return noRooms;           //Possibly needs synchronization
+        }
+        public void setPrice(double price)
+        {
+            this.price = price;           //Possibly needs synchronization
+        }
+        public double getPrice()
+        {
+            return price;           //Possibly needs synchronization
+        }
+        public void setAmt(double amt)
         {
             amount = amt;           //Possibly needs synchronization
         }
-        public int getAmt()
+        public double getAmt()
         {
             return amount;           //Possibly needs synchronization
         }

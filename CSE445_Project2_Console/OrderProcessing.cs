@@ -16,16 +16,41 @@ namespace CSE445_Project2_Console
          * You can implement the confirmation in different ways: you can use another buffer for the confirmation (with a buffer cell for each thread) so you don't have to consider the conflict among threads. 
          * However, you still need to coordinate the write and read between the producer and the consumer.
          */
-        public OrderProcessing()
+        private OrderClass order;
+        public OrderProcessing(OrderClass order)
         { 
+        this.order = order;
+
+            if (checkCardValidity() == true)
+            {
+                calculateTotal();
+            }
+            else
+            { 
         
+            }
+
         }
 
-        static public void start()
+        private bool checkCardValidity()
         {
 
+            int cardNo = order.getCardNo();
+
+            return true;
         }
 
+        private void calculateTotal()
+        { 
+            
+            double amount;
+            double tax = 0.09 * (double)order.getnoRooms() * order.getPrice();
+            double locationCharge = 19;
+
+            amount = (double)order.getnoRooms() * order.getPrice() + tax + locationCharge;
+            order.setAmt(amount);
+
+        }
 
 
     }

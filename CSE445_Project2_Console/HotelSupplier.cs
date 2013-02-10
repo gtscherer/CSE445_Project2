@@ -86,8 +86,9 @@ namespace CSE445_Project2_Console
 
         }
 
-        private static void Worker(object order) { 
-        
+        private static void Worker(object order) {
+
+            OrderProcessing p = new OrderProcessing((OrderClass)order);
 
 
         }

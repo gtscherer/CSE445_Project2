@@ -17,9 +17,21 @@ namespace CSE445_Project2_Console
              * Create Threads
              * Start Threads
              */
+            Console.WriteLine("Program started.");
             const int N = 3;
             HotelSupplier hotel = new HotelSupplier();
+            Thread hotelThread = new Thread(new ThreadStart(hotel.hotelStarter));
+            hotelThread.Start();
+            TravelAgency obitz = new TravelAgency();
+            HotelSupplier.priceCut += new HotelSupplier.priceCutEvent(obitz.priceCutEvent);
 
+                        Thread[] agencies = new Thread[N];
+            for(int i = 0; i < 3; i++)
+            {
+                agencies[i] = new Thread(new ThreadStart(obitz.agencyFunc));
+                agencies[i].Name = (i + 1).ToString();
+                agencies[i].Start();
+            }
 
 
             //Console.WriteLine("does it work: " + testOrder());

@@ -23,27 +23,43 @@ namespace CSE445_Project2_Console
         private Int32 price;
         public delegate void priceCutEvent(Int32 price);
         public static event priceCutEvent priceCut;
+        private int[] numRooms;
+        private int[] numPriceCuts;
+        private DateTime now;
+
 
         public HotelSupplier()
         {
             // let's see
             price_model = new PricingModel();
-
+            numRooms = new int[7];
+            numPriceCuts = new int[7];
             // get start time
-            DateTime now = DateTime.Now;
+            now = DateTime.Now;
             Console.WriteLine(now);
-
+            for (int i = 0; i < 7; ++i)
+            {
+                numRooms[i] = 50;
+                numPriceCuts[i] = 0;
+            }
 
             // the HotelSupplier will be active until 10 price cuts have been reached
+            
+
+        }
+        public void hotelStarter()
+        {
             for (Int32 i = 0; i < 11; )
             {
-
+                //Console.WriteLine("For loop start: {0}", i);
                 // get random number to scale price
                 Random rand = new Random();
-                int randomNumber = rand.Next(0, 100);
+                int randomNumber = rand.Next(0, 100); //Will replaced with PriceModel.getPrice();
+
 
                 // not sure whether we really would like to keep it this way
                 Int32 newPrice = price_model.scalePrice(randomNumber);
+                Thread.Sleep(50);
                 Console.WriteLine("New Price is {0}", newPrice);
 
                 // is there a lower price available?
@@ -53,7 +69,7 @@ namespace CSE445_Project2_Console
                     if (priceCut != null)
                     {
                         // emit / raise event to subscribers
-                        priceCut(price);
+                        priceCut(newPrice);
                     }
                     // increase the number of price cuts
                     i++;
@@ -64,13 +80,14 @@ namespace CSE445_Project2_Console
                 // not clear how orchestration should look like...
 
             }
+
             // get start time
             DateTime after = DateTime.Now;
             Console.WriteLine(after);
             long ticks = after.Ticks - now.Ticks;
             double seconds = TimeSpan.FromTicks(ticks).TotalSeconds;
             Console.WriteLine("Total runtime {0} seconds ", seconds);
-            
+
             Console.ReadLine();
         }
         

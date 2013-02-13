@@ -30,7 +30,7 @@ namespace CSE445_Project2_Console
          * Needs testing once we have a travel agency class put together
          */
 
-        static int numberOfCells = 5;
+        static int numberOfCells = 3;
 
         //Semaphore allows travel agency to get access, hotel supplier will release when order is processed
         public static Semaphore _cells = new Semaphore(numberOfCells , numberOfCells);

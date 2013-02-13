@@ -24,6 +24,7 @@ namespace CSE445_Project2_Console
             const int idNum = 100;
             TravelAgency[] obitz = new TravelAgency[N];
             
+            //MultiCellBuffer.notifyHotelOfOrder += new MultiCellBuffer.notifyHotelOfOrderEvent( hotel function to start and stop buffer polling );
 
             Thread[] agencies = new Thread[N];
             for(int i = 0; i < 3; ++i)

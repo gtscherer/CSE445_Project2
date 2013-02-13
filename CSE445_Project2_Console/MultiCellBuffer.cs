@@ -35,7 +35,10 @@ namespace CSE445_Project2_Console
         //Semaphore allows travel agency to get access, hotel supplier will release when order is processed
         public static Semaphore _cells = new Semaphore(numberOfCells , numberOfCells);
 
-
+        //Events
+        public delegate void notifyHotelOfOrderEvent(bool cellsOccupied);
+        public static event notifyHotelOfOrderEvent notifyHotelOfOrder;
+ 
         static string[] cells = new string[numberOfCells];
         static int counter = 0;
 
@@ -59,7 +62,11 @@ namespace CSE445_Project2_Console
                 if (!success)
                 {
                     Console.WriteLine("Cells are full, Could not write to buffer");
-                }            
+                }
+                else
+                {
+                    notifyHotelOfOrder(true);
+                }
         }
 
         //Test to make certain the cells aren't empty
@@ -71,6 +78,10 @@ namespace CSE445_Project2_Console
                 if (cells[i] != null)
                     empty = false;
             }
+
+            if (empty)
+                notifyHotelOfOrder(false);
+
             return empty;
         }
 

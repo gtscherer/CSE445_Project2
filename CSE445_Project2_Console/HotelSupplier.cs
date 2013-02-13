@@ -43,12 +43,11 @@ namespace CSE445_Project2_Console
                 numPriceCuts[i] = 0;
             }
 
-            // the HotelSupplier will be active until 10 price cuts have been reached
-            
-
+            MultiCellBuffer mcp = new MultiCellBuffer();
         }
         public void hotelStarter()
         {
+            // the HotelSupplier will be active until 10 price cuts have been reached
             for (Int32 i = 0; i < 11; )
             {
                 //Console.WriteLine("For loop start: {0}", i);

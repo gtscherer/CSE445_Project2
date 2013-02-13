@@ -90,7 +90,7 @@ namespace CSE445_Project2_Console
 
             Console.ReadLine();
         }
-        
+        // Need an event handler to catch a buffer event for new order
         public void setOrder(OrderClass[] orderTable) {
 
             // get encoder - did we want to use a singleton here?

@@ -20,15 +20,28 @@ namespace CSE445_Project2_Console
          * Before sending the order to the MultiCellBuffer, a time stamp must be saved.
          * When the confirmation of order completion is received, the time of the order will be calculated and saved (or printed).
          */
-        public TravelAgency() { }
+        private string senderId;
+        
 
+        public TravelAgency() {
+        }
+        public void setId(int a)
+        {
+            senderId = a.ToString();
+        }
         public void agencyFunc()
         {
+            Console.WriteLine("My Sender ID is: {0}", senderId);
         }
 
         public void priceCutEvent(int price)
         {
+            OrderClass order = new OrderClass();
+            order.setAmt(12);
+            order.setCardNo(4234);
+            order.setID(senderId);
             Console.WriteLine("Received : {0}", price);
+            Console.WriteLine("Sender id = {0}", senderId);
         }
     }
 }

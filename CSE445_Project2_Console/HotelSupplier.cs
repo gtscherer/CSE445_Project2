@@ -21,16 +21,17 @@ namespace CSE445_Project2_Console
 
         private PricingModel price_model;
         private Int32 price;
-        public delegate void priceCutEvent(Int32 price);
+        public delegate void priceCutEvent(Int32 newPrice, Int32 price);
         public static event priceCutEvent priceCut;
         private int[] numRooms;
         private int[] numPriceCuts;
         private DateTime now;
+        private MultiCellBuffer buffer;
 
-
-        public HotelSupplier()
+        public HotelSupplier(MultiCellBuffer buffer)
         {
             // let's see
+            this.buffer = buffer;
             price_model = new PricingModel();
             numRooms = new int[7];
             numPriceCuts = new int[7];
@@ -47,6 +48,9 @@ namespace CSE445_Project2_Console
         }
         public void hotelStarter()
         {
+
+            MultiCellBuffer.notifyHotelOfOrder += new MultiCellBuffer.notifyHotelOfOrderEvent(this.notifyHotelOfOrder);
+
             // the HotelSupplier will be active until 10 price cuts have been reached
             for (Int32 i = 0; i < 11; )
             {
@@ -68,7 +72,7 @@ namespace CSE445_Project2_Console
                     if (priceCut != null)
                     {
                         // emit / raise event to subscribers
-                        priceCut(newPrice);
+                        priceCut(newPrice, price);
                     }
                     // increase the number of price cuts
                     i++;
@@ -89,22 +93,35 @@ namespace CSE445_Project2_Console
 
             Console.ReadLine();
         }
+
         // Need an event handler to catch a buffer event for new order
-        public void setOrder(OrderClass[] orderTable) {
+        public void notifyHotelOfOrder(bool cellsOccupied)
+        {
+            String[] orderString = new String[1]; 
+            orderString[0] = buffer.getOneCell();
+            this.setOrder(orderString);
+            // trace events caught
+            Console.WriteLine("Order {0}", orderString[0], " received");
+
+        }
+
+
+        public void setOrder(String[] orderString)
+        {
 
             // get encoder - did we want to use a singleton here?
             Decoder    d = new Decoder();
             OrderClass order;
-            Thread[] thread = new Thread[orderTable.Length];
+            Thread[] thread = new Thread[orderString.Length];
 
             // decode all orders
-            for (int i = 0; i < orderTable.Length; ++i)
+            for (int i = 0; i < orderString.Length; ++i)
             {
 
             // set the order an decrypt
-            d.setOrder(orderTable[i].ToString());
+            d.setOrder(orderString[i]);
             
-            // get the decrypeted order as string
+            // get the decrypeted order
             order = d.getOrder();
 
             // need to call OrderProcessing

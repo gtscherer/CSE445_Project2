@@ -17,6 +17,10 @@ namespace CSE445_Project2_Console
          * However, you still need to coordinate the write and read between the producer and the consumer.
          */
         private OrderClass order;
+ 
+        public delegate void orderConfirmationEvent(OrderClass confirmedOrder);
+        public static event orderConfirmationEvent orderConfirmation;
+
         public OrderProcessing(OrderClass order)
         { 
         this.order = order;
@@ -59,11 +63,9 @@ namespace CSE445_Project2_Console
             amount = (double)order.getnoRooms() * order.getPrice() + tax + locationCharge;
             order.setAmt(amount);
 
-            // update order buffer
-            
             // inform agency here - what approach will we choose?
-            // A) separate confirmation buffer?
-            // B) shall we use an event?
+            orderConfirmation(order);
+
 
         }
 

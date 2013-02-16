@@ -104,7 +104,8 @@ namespace CSE445_Project2_Console
         //this class is an event listener that creates a new order and
         //adds it to the list of queued orders to be added to the buffer in the agencyFunc
         //THIS CALLBACK EVENT HANDLER NEEDS TO CHANGE SO I RECEIVE PREVIOUS PRICE AND CURRENT
-        public void priceCutEvent(int price)
+        // Joern on 1/15/13 - previous price added
+        public void priceCutEvent(int newPrice, int prevPrice)
         {
 
 
@@ -114,7 +115,7 @@ namespace CSE445_Project2_Console
 
             //generate scaled demand for first order without previous price
             //assuming its a price drop of 10%
-            /*if (prevPrice == 0)
+            if (prevPrice == 0)
             {
                 tempDemand = (1.1) * roomDemand;
                 roomDemand = (int)tempDemand;
@@ -122,9 +123,9 @@ namespace CSE445_Project2_Console
             //scale up room demand based on how big the price drop is
             else
             {
-                tempDemand = (PREVPRICE/PRICE) * roomDemand;
+                tempDemand = (prevPrice/newPrice) * roomDemand;
                 roomDemand = (int)tempDemand;
-            }*/
+            }
 
 
 
@@ -133,7 +134,7 @@ namespace CSE445_Project2_Console
             currentOrder.setnoRooms(roomDemand);
             currentOrder.setID(senderId.ToString());
             currentOrder.setCardNo(senderId + 100);
-            currentOrder.setPrice((double)price);
+            currentOrder.setPrice((double)newPrice);
 
             //add new order to pending list
             queuedOrders.Add(currentOrder);
@@ -141,12 +142,7 @@ namespace CSE445_Project2_Console
             //reset current order
             currentOrder = new OrderClass();
 
-
-
-
-
-
-            Console.WriteLine("Received : {0}", price);
+            Console.WriteLine("Received : {0}", newPrice);
             Console.WriteLine("Sender id = {0}", senderId);
 
 
@@ -156,6 +152,10 @@ namespace CSE445_Project2_Console
         //Event handler for order confirmation
         public void orderConfirmationEvent(OrderClass confirmedOrder)
         {
+
+            // trace events caught
+            Console.WriteLine("Order {0}", confirmedOrder.getID(), " caught");
+
             //only attempt to move order from sent to confirmed after making sure
             //the order sender id matches the thread sender id
             //otherwise it is someonelse's order

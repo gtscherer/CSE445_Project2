@@ -17,9 +17,12 @@ namespace CSE445_Project2_Console
              * Create Threads
              * Start Threads
              */
+
+            MultiCellBuffer buffer = new MultiCellBuffer();
             Console.WriteLine("Program started.");
             const int N = 3;
-            HotelSupplier hotel = new HotelSupplier();
+            HotelSupplier hotel = new HotelSupplier(buffer);
+
                      
             const int idNum = 100;
             TravelAgency[] obitz = new TravelAgency[N];

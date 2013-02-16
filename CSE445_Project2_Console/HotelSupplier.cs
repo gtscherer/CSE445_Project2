@@ -27,6 +27,7 @@ namespace CSE445_Project2_Console
         public static event priceCutEvent priceCut;
         public static event printTimesEvent printAgencyTimes;
         public static event printOrdersEvent printOrders;
+        private EventWaitHandle[] waitHandle;
         private int[] numRooms;
         private int[] numPriceCuts;
         private DateTime now;
@@ -47,7 +48,8 @@ namespace CSE445_Project2_Console
                 numRooms[i] = 50;
                 numPriceCuts[i] = 0;
             }
-
+            waitHandle = new EventWaitHandle[1];
+            waitHandle[0] = new EventWaitHandle(false, EventResetMode.AutoReset);
             MultiCellBuffer mcp = new MultiCellBuffer();
         }
         public void hotelStarter()
@@ -69,9 +71,9 @@ namespace CSE445_Project2_Console
                 Int32 newPrice = price_model.cutPrice(randomNumber);
 
                 price = randomNumber;
-                
-               
-                    Console.WriteLine("New Price is {0}", newPrice);
+
+                Console.WriteLine("Old Price = {0}", randomNumber);
+                Console.WriteLine("New Price is {0}", newPrice);
                 
 
                 // is there a lower price available?
@@ -81,7 +83,9 @@ namespace CSE445_Project2_Console
                     if (priceCut != null)
                     {
                         // emit / raise event to subscribers
+
                         priceCut(newPrice, price);
+                        AutoResetEvent.WaitAny(waitHandle, 10000);
                     }
                     // increase the number of price cuts
                     i++;
@@ -127,7 +131,7 @@ namespace CSE445_Project2_Console
             this.setOrder(orderString);
             // trace events caught
             Console.WriteLine("({0}) Received By Hotel Supplier", dec.getOrder().ToString());
-
+            waitHandle[0].Set();
         }
 
 

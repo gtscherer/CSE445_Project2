@@ -159,11 +159,9 @@ namespace CSE445_Project2_Console
 
                 //reset current order
                 currentOrder = new OrderClass();
-
                 //Console.WriteLine("Received : {0}", newPrice);
                 //Console.WriteLine("Sender id = {0}", senderId);
             }
-
 
         }
 
@@ -215,7 +213,7 @@ namespace CSE445_Project2_Console
                 Console.WriteLine("Order {0}:       Total Time: {1} Seconds", confirmedOrders[i].getOrderId(), seconds);
             }
             long ticks2;
-            ticks2 = orderFinish[confirmedOrders.Count - 0].Ticks - orderStart[0].Ticks;
+            ticks2 = orderFinish[confirmedOrders.Count - 1].Ticks - orderStart[0].Ticks;
             double seconds2 = TimeSpan.FromTicks(ticks2).TotalSeconds;
             Console.WriteLine("Total time from submission of first order to last confirmation: {0}", seconds2);
 

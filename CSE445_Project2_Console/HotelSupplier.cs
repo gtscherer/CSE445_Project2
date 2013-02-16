@@ -85,13 +85,13 @@ namespace CSE445_Project2_Console
                         // emit / raise event to subscribers
 
                         priceCut(newPrice, price);
-                        AutoResetEvent.WaitAny(waitHandle, 10000);
+                        AutoResetEvent.WaitAny(waitHandle, 30000);
                     }
                     // increase the number of price cuts
                     i++;
                 }
                 price = newPrice;
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
                 randomNumber = price_model.changePrice();
                 // not clear how orchestration should look like...
 

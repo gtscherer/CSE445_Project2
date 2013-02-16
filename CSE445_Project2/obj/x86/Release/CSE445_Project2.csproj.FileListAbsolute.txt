@@ -1,0 +1,8 @@
+C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\CSE445_Project2\bin\Release\CSE445_Project2.exe
+C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\CSE445_Project2\bin\Release\CSE445_Project2.pdb
+C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\CSE445_Project2\obj\x86\Release\CSE445_Project2.csprojResolveAssemblyReference.cache
+C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\CSE445_Project2\obj\x86\Release\CSE445_Project2.Form1.resources
+C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\CSE445_Project2\obj\x86\Release\CSE445_Project2.Properties.Resources.resources
+C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\CSE445_Project2\obj\x86\Release\CSE445_Project2.csproj.GenerateResource.Cache
+C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\CSE445_Project2\obj\x86\Release\CSE445_Project2.exe
+C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\CSE445_Project2\obj\x86\Release\CSE445_Project2.pdb

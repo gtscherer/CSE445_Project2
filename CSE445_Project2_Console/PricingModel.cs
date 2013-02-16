@@ -22,8 +22,12 @@ namespace CSE445_Project2_Console
             priceTable = new int[7];
             for (int i = 0; i < priceTable.Length; ++i)
             {
-                //priceTable[i] = (i + (i * 3 - 2)) + 107;
-                priceTable[i] = i;
+                priceTable[i] = (i + (i/2) - (i * 3)) + 107;
+                if (i > 4)
+                {
+                    priceTable[i] += 20;
+                }
+                //priceTable[i] = i;
 
             }
             dayOfWeek = 0;
@@ -39,11 +43,11 @@ namespace CSE445_Project2_Console
         }
         public int scalePrice(int num)
         {
-            return num + 50;
+            return num * 100/80;
         }
         public int cutPrice(int num)
         {
-            return num - 70;
+            return num * 90/100;
         }
         public int getPrice()
         {

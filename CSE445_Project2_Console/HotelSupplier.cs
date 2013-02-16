@@ -55,20 +55,20 @@ namespace CSE445_Project2_Console
             Console.WriteLine("Hotel thread created");
             MultiCellBuffer.notifyHotelOfOrder += new MultiCellBuffer.notifyHotelOfOrderEvent(this.notifyHotelOfOrder);
 
-           
+            int randomNumber = price_model.getPrice();
             // the HotelSupplier will be active until 10 price cuts have been reached
             for (Int32 i = 0; i < 10; )
             {
                 //Console.WriteLine("For loop start: {0}", i);
                 // get random number to scale price
-                Random rand = new Random();
-                int randomNumber = rand.Next(0, 100); //Will replaced with PriceModel.getPrice();
+                //Random rand = new Random();
+               
 
 
                 // not sure whether we really would like to keep it this way
-                Int32 newPrice = price_model.scalePrice(randomNumber);
-                
+                Int32 newPrice = price_model.cutPrice(randomNumber);
 
+                price = randomNumber;
                 
                
                     Console.WriteLine("New Price is {0}", newPrice);
@@ -88,7 +88,7 @@ namespace CSE445_Project2_Console
                 }
                 price = newPrice;
                 Thread.Sleep(500);
-
+                randomNumber = price_model.changePrice();
                 // not clear how orchestration should look like...
 
             }
@@ -123,7 +123,7 @@ namespace CSE445_Project2_Console
             MultiCellBuffer._cells.Release();
             Decoder dec = new Decoder(orderString[0]);
 
-
+            price_model.scalePrice(Convert.ToInt32(dec.getOrder().getPrice()));
             this.setOrder(orderString);
             // trace events caught
             Console.WriteLine("({0}) Received By Hotel Supplier", dec.getOrder().ToString());

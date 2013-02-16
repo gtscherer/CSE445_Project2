@@ -185,11 +185,11 @@ namespace CSE445_Project2_Console
                     if (sentOrders.ElementAt(s).getOrderId() == confirmedOrder.getOrderId())
                     {
                         Console.WriteLine("Order ({0}) Confirmation Received", confirmedOrder.ToString());
-                        
-                        
+
+                        orderFinish[s] = DateTime.Now;
                         //move from sent orders to confirmed orders
                         confirmedOrders.Add(confirmedOrder);
-                        orderFinish[s] = DateTime.Now;
+                        
  
                         // trace events caught
 

@@ -24,7 +24,17 @@ namespace CSE445_Project2_Console
         private int noRooms;
         private double price;
         private string senderId;
+        private string orderId;
 
+        public string getOrderId()
+        {
+            return orderId;
+        }
+
+        public void setOrderID(string o)
+        {
+            orderId = o;
+        }
         public string getID(){
             return senderId;            //Possibly needs synchronization
         }
@@ -67,7 +77,7 @@ namespace CSE445_Project2_Console
 
         public override string ToString()
         {
-            return "SenderId: " + getID() + " Card Number: " + getCardNo() + " Amount: " + getAmt();
+            return "Agency: " + getID() + " Order ID: " + getOrderId() /*+ " Card #: " + getCardNo()*/ + " Rooms:  " + getnoRooms() +" Price: " + getPrice(); /*+ " Amount: " + getAmt();*/
         }
 
         public override bool Equals(object obj)

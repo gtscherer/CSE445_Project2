@@ -28,8 +28,10 @@ namespace CSE445_Project2_Console
         private int roomDemand;
         //room demand variable used for scaling
         private double tempDemand;
-        //int to keep track of start dateTimes for orders
+        //int to keep track of order number
         private int orderNumber;
+        //keep track of start times
+        private int startNumber;
 
 
         //to generate random demand to scale with price
@@ -60,6 +62,8 @@ namespace CSE445_Project2_Console
             orderStart = new DateTime[10];
             orderFinish = new DateTime[10];
             orderNumber = 0;
+            startNumber = 0;
+            roomDemand = randDemand.Next(50, 100);
             mcb = new MultiCellBuffer();
         }
 
@@ -72,39 +76,45 @@ namespace CSE445_Project2_Console
         //This is the actual thread where it attempts to add orders tot he buffer
         public void agencyFunc()
         {
-            Console.WriteLine("My Sender ID is: {0}", senderId);
+            Console.WriteLine("Agency function thread created, my ID is: {0}", senderId);
 
             //using a while(true) because to continuously poll the queued orders so
             //whenever one is added it attempts to add it to the buffer
             while (true)
             {
-                Thread.Sleep(50);
+                //demand always changing
+                roomDemand = randDemand.Next(50, 100);
+
+                //commented out sleep because all threads were syncing up and generating the same random demand
+                //Thread.Sleep(50);
+
+                
+
                 //Console.WriteLine("test");
                 //check to see if any orders have been added to the queue
-                if (queuedOrders.Count != 0 && orderNumber < 10)
+                if (queuedOrders.Count != 0 && startNumber < 10)
                 {
                     //encode the first order in line
                     orderEncoder.setOrder(queuedOrders.First());
-                    Console.WriteLine("Sending Order {0}", queuedOrders.First().ToString());
-
+                    Console.WriteLine("Sending Order ({0}) To Hotel Supplier", queuedOrders.First().ToString());
+                    //move the order from queued to sent
+                    sentOrders.Add(queuedOrders.First());
+                    queuedOrders.RemoveAt(0);
 
                     // this is where i need the multicelled buffer to add the order to the buffer 
                     MultiCellBuffer._cells.WaitOne();
+                    orderStart[startNumber] = DateTime.Now;
                     mcb.setOneCell(orderEncoder.getOrder());
 
-                    Console.WriteLine("Sent Order");
-
                     //start time stamp for order
-                    orderStart[orderNumber] = DateTime.Now;
+                    
 
                     //Console.WriteLine("Order Sent! Thread: {0}, Rooms: {1}, Card: {2}", queuedOrders.First().getID(), queuedOrders.First().getnoRooms(), queuedOrders.First().getCardNo());
 
 
-                    //move the order from queued to sent
-                    sentOrders.Add(queuedOrders.First());
-                    queuedOrders.RemoveAt(0);
+                    
                     //increment orderNumber for startTime of next order
-                    orderNumber++;
+                    startNumber++;
 
                 }
             }
@@ -117,79 +127,96 @@ namespace CSE445_Project2_Console
         // Joern on 1/15/13 - previous price added
         public void priceCutEvent(int newPrice, int prevPrice)
         {
+            
 
-
-            //generate random room demand
-            roomDemand = randDemand.Next(50, 100);
-
-
-            //generate scaled demand for first order without previous price
-            //assuming its a price drop of 10%
-            if (prevPrice == 0)
+            if (orderNumber < 10)
             {
-                tempDemand = (1.1) * roomDemand;
+                //generate random room demand
+                roomDemand = randDemand.Next(50, 100);
+
+
+                //generate scaled demand for first order without previous price
+                //assuming its a price drop of 10%           
+                   
+                tempDemand = ((double)prevPrice / (double)newPrice) * roomDemand;                    
                 roomDemand = (int)tempDemand;
+                    
+                
+
+
+
+
+                //create new order;
+                currentOrder.setnoRooms(roomDemand);
+                currentOrder.setID(senderId.ToString());
+                currentOrder.setCardNo(senderId + 5000);
+                currentOrder.setPrice((double)newPrice);
+                currentOrder.setOrderID(senderId + "-" + orderNumber);
+                orderNumber++;
+
+                //add new order to pending list
+                queuedOrders.Add(currentOrder);
+
+                //reset current order
+                currentOrder = new OrderClass();
+
+                //Console.WriteLine("Received : {0}", newPrice);
+                //Console.WriteLine("Sender id = {0}", senderId);
             }
-            //scale up room demand based on how big the price drop is
-            else
-            {
-                tempDemand = (prevPrice/newPrice) * roomDemand;
-                roomDemand = (int)tempDemand;
-            }
-
-
-
-
-            //create new order;
-            currentOrder.setnoRooms(roomDemand);
-            currentOrder.setID(senderId.ToString());
-            currentOrder.setCardNo(senderId + 5000);
-            currentOrder.setPrice((double)newPrice);
-
-            //add new order to pending list
-            queuedOrders.Add(currentOrder);
-
-            //reset current order
-            currentOrder = new OrderClass();
-
-            //Console.WriteLine("Received : {0}", newPrice);
-            //Console.WriteLine("Sender id = {0}", senderId);
 
 
         }
-
 
         //Event handler for order confirmation
         public void orderConfirmationEvent(OrderClass confirmedOrder)
         {
 
-            // trace events caught
-            Console.WriteLine("Order {0} caught", confirmedOrder.getID());
+            
 
             //only attempt to move order from sent to confirmed after making sure
             //the order sender id matches the thread sender id
             //otherwise it is someonelse's order
             if (confirmedOrder.getID() == senderId.ToString())
             {
+                
+               
                 //search for the confirmed order
                 for (int s = 0; s < sentOrders.Count; s++)
                 {
-                    if (sentOrders.ElementAt(s).getnoRooms() == confirmedOrder.getnoRooms() &&
-                        sentOrders.ElementAt(s).getPrice() == confirmedOrder.getPrice() &&
-                        sentOrders.ElementAt(s).getCardNo() == confirmedOrder.getCardNo())
+
+                    if (sentOrders.ElementAt(s).getOrderId() == confirmedOrder.getOrderId())
                     {
+                        Console.WriteLine("Order ({0}) Confirmation Received", confirmedOrder.ToString());
+                        orderFinish[s] = DateTime.Now;
+                        
                         //move from sent orders to confirmed orders
                         confirmedOrders.Add(sentOrders.ElementAt(s));
+                        // trace events caught
 
                         //sentOrders.RemoveAt(s); i will not remove the confirmed order from s in order to
                         //maintain the correct order in which the orders were submitted so i can use
                         //that index for the finish time stamp
                         //TimeStamp for end of order s
-                        orderFinish[s] = DateTime.Now;
                     }
 
                 }
             }
+
+        }
+
+        public void printTimes()
+        {
+            //Thread.SpinWait(2000);
+            Console.WriteLine("Thread Number: {0}", senderId);
+            for (int i = 0; i < confirmedOrders.Count; i++)
+            {
+                long ticks = orderFinish[i].Ticks - orderStart[i].Ticks;
+                double seconds = TimeSpan.FromTicks(ticks).TotalSeconds;
+                Console.WriteLine("Order {0}:       Total Time: {1} Seconds", confirmedOrders[i].getOrderId(), seconds);
+            }
+            long ticks2 = orderFinish[confirmedOrders.Count-1].Ticks - orderStart[0].Ticks;
+            double seconds2 = TimeSpan.FromTicks(ticks2).TotalSeconds;
+            Console.WriteLine("Total time from submission of first order to last confirmation: {0}", seconds2);
 
         }
     }

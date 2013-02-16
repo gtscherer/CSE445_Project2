@@ -34,8 +34,15 @@ namespace CSE445_Project2_Console
             temp.Append(s.getCardNo().ToString());
             temp.Append(" ");
             /* This is commented out because I haven't determined what senderID's type is. */
-            temp.Append(s.getID());
+            temp.Append(s.getID().ToString());
             temp.Append(" ");
+            temp.Append(s.getOrderId().ToString());
+            temp.Append(" ");
+            temp.Append(s.getnoRooms().ToString());
+            temp.Append(" ");
+            temp.Append(s.getPrice().ToString());
+            temp.Append(" ");
+            
              
             order = temp.ToString();
             EncryptionService.ServiceClient serviceClient = new EncryptionService.ServiceClient();

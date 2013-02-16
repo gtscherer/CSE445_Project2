@@ -32,10 +32,11 @@ namespace CSE445_Project2_Console
             Thread[] agencies = new Thread[N];
             for(int i = 0; i < 3; ++i)
             {
-                Console.WriteLine("Execution {0}", i);
+                //Console.WriteLine("Execution {0}", i);
                 obitz[i] = new TravelAgency();
                 obitz[i].setId(idNum + i);
                 HotelSupplier.priceCut += new HotelSupplier.priceCutEvent(obitz[i].priceCutEvent);
+                HotelSupplier.printAgencyTimes += new HotelSupplier.printTimesEvent(obitz[i].printTimes);
                 agencies[i] = new Thread(new ThreadStart(obitz[i].agencyFunc));
                 OrderProcessing.orderConfirmation += new OrderProcessing.orderConfirmationEvent(obitz[i].orderConfirmationEvent);
                 agencies[i].Name = (i + 1).ToString();
@@ -44,6 +45,8 @@ namespace CSE445_Project2_Console
 
             Thread hotelThread = new Thread(new ThreadStart(hotel.hotelStarter));
             hotelThread.Start();
+
+            
    
 
 

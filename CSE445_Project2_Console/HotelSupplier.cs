@@ -22,7 +22,9 @@ namespace CSE445_Project2_Console
         private PricingModel price_model;
         private Int32 price;
         public delegate void priceCutEvent(Int32 newPrice, Int32 price);
+        public delegate void printTimesEvent();
         public static event priceCutEvent priceCut;
+        public static event printTimesEvent printAgencyTimes;
         private int[] numRooms;
         private int[] numPriceCuts;
         private DateTime now;
@@ -48,9 +50,10 @@ namespace CSE445_Project2_Console
         }
         public void hotelStarter()
         {
-
+            Console.WriteLine("Hotel thread created");
             MultiCellBuffer.notifyHotelOfOrder += new MultiCellBuffer.notifyHotelOfOrderEvent(this.notifyHotelOfOrder);
 
+           
             // the HotelSupplier will be active until 10 price cuts have been reached
             for (Int32 i = 0; i < 11; )
             {
@@ -91,6 +94,9 @@ namespace CSE445_Project2_Console
             double seconds = TimeSpan.FromTicks(ticks).TotalSeconds;
             Console.WriteLine("Total runtime {0} seconds ", seconds);
 
+            printAgencyTimes();
+            
+
             Console.ReadLine();
         }
 
@@ -105,7 +111,7 @@ namespace CSE445_Project2_Console
 
             this.setOrder(orderString);
             // trace events caught
-            Console.WriteLine("Order {0}", dec.getOrder().ToString(), " received");
+            Console.WriteLine("Order ({0}) Received By Hotel Supplier", dec.getOrder().ToString());
 
         }
 

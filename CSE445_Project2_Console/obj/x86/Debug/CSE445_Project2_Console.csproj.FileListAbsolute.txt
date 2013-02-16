@@ -25,3 +25,9 @@ C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\2\CSE445
 C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\2\CSE445_Project2\CSE445_Project2_Console\bin\Debug\CSE445_Project2_Console.pdb
 C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\2\CSE445_Project2\CSE445_Project2_Console\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\gscherer\Documents\Visual Studio 2010\Projects\CSE445_Project2\2\CSE445_Project2\CSE445_Project2_Console\obj\x86\Debug\CSE445_Project2_Console.exe
+C:\Users\Drini\Documents\Insync\drini1991@gmail.com\ASU\6th semester\CSE 445\Assignment 2\CSE445_Project2\CSE445_Project2_Console\bin\Debug\CSE445_Project2_Console.exe.config
+C:\Users\Drini\Documents\Insync\drini1991@gmail.com\ASU\6th semester\CSE 445\Assignment 2\CSE445_Project2\CSE445_Project2_Console\obj\x86\Debug\CSE445_Project2_Console.pdb
+C:\Users\Drini\Documents\Insync\drini1991@gmail.com\ASU\6th semester\CSE 445\Assignment 2\CSE445_Project2\CSE445_Project2_Console\bin\Debug\CSE445_Project2_Console.exe
+C:\Users\Drini\Documents\Insync\drini1991@gmail.com\ASU\6th semester\CSE 445\Assignment 2\CSE445_Project2\CSE445_Project2_Console\bin\Debug\CSE445_Project2_Console.pdb
+C:\Users\Drini\Documents\Insync\drini1991@gmail.com\ASU\6th semester\CSE 445\Assignment 2\CSE445_Project2\CSE445_Project2_Console\obj\x86\Debug\CSE445_Project2_Console.csprojResolveAssemblyReference.cache
+C:\Users\Drini\Documents\Insync\drini1991@gmail.com\ASU\6th semester\CSE 445\Assignment 2\CSE445_Project2\CSE445_Project2_Console\obj\x86\Debug\CSE445_Project2_Console.exe

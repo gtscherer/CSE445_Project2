@@ -38,6 +38,9 @@ namespace CSE445_Project2_Console
             StringBuilder temp2 = new StringBuilder();
             StringBuilder temp3 = new StringBuilder();
             StringBuilder temp4 = new StringBuilder();
+            StringBuilder temp5 = new StringBuilder();
+            StringBuilder temp6 = new StringBuilder();
+            StringBuilder temp7 = new StringBuilder();
             int j = 0;
             for (int i = 0; i < chStr.Length; ++i)
             {
@@ -69,6 +72,36 @@ namespace CSE445_Project2_Console
                         }
                         break;
                     }
+
+                    case 3:
+                    {
+                        while (chStr[i] != ' ')
+                        {
+                            temp5.Append(chStr[i]); //builds a string based on input up to third space
+                            ++i;
+                        }
+                        break;
+                    }
+
+                    case 4:
+                    {
+                        while (chStr[i] != ' ')
+                        {
+                            temp6.Append(chStr[i]); //builds a string based on input up to third space
+                            ++i;
+                        }
+                        break;
+                    }
+
+                    case 5:
+                    {
+                        while (chStr[i] != ' ')
+                        {
+                            temp7.Append(chStr[i]); //builds a string based on input up to third space
+                            ++i;
+                        }
+                        break;
+                    }
                 }
                 ++j;
             }
@@ -77,10 +110,17 @@ namespace CSE445_Project2_Console
             int cardNo = Convert.ToInt32(temp3.ToString());
             
             string senderID =  temp4.ToString();
+            string orderID = temp5.ToString();
+            int noRooms = Convert.ToInt32(temp6.ToString());
+            double price = Convert.ToDouble(temp7.ToString());
             s.setID(senderID);
             
             s.setAmt(amt); //OrderClass object set() methods
             s.setCardNo(cardNo);
+            s.setOrderID(orderID);
+            s.setPrice(price);
+            s.setnoRooms(noRooms);
+            
         }
     }
 }

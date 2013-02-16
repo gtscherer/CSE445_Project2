@@ -190,6 +190,7 @@ namespace CSE445_Project2_Console
                         //move from sent orders to confirmed orders
                         confirmedOrders.Add(confirmedOrder);
                         orderFinish[s] = DateTime.Now;
+ 
                         // trace events caught
 
                         //sentOrders.RemoveAt(s); i will not remove the confirmed order from s in order to

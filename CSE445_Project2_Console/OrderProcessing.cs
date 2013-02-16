@@ -41,8 +41,8 @@ namespace CSE445_Project2_Console
 
             int cardNo = order.getCardNo();
 
-            if ((cardNo > 4999 && cardNo < 7001) ||
-               ( HotelSupplier.checkCard(cardNo) == true ))
+            if ((cardNo > 4999 && cardNo < 7001) /*||
+               ( HotelSupplier.checkCard(cardNo) == true )*/)
             {
                 return true;
             }
@@ -64,7 +64,8 @@ namespace CSE445_Project2_Console
             order.setAmt(amount);
 
             // inform agency here - what approach will we choose?
-            orderConfirmation(order);
+            if(orderConfirmation != null)
+                orderConfirmation(order);
 
 
         }

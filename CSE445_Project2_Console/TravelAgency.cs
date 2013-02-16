@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace CSE445_Project2_Console
 {
@@ -44,6 +45,7 @@ namespace CSE445_Project2_Console
         private OrderClass currentOrder;
         //encoder to encode each order
         private Encoder orderEncoder;
+        private MultiCellBuffer mcb;
 
 
         public TravelAgency()
@@ -58,6 +60,7 @@ namespace CSE445_Project2_Console
             orderStart = new DateTime[10];
             orderFinish = new DateTime[10];
             orderNumber = 0;
+            mcb = new MultiCellBuffer();
         }
 
         //public mehtod to set ID
@@ -75,14 +78,21 @@ namespace CSE445_Project2_Console
             //whenever one is added it attempts to add it to the buffer
             while (true)
             {
+                Thread.Sleep(50);
+                //Console.WriteLine("test");
                 //check to see if any orders have been added to the queue
-                if (queuedOrders.Count != 0)
+                if (queuedOrders.Count != 0 && orderNumber < 10)
                 {
                     //encode the first order in line
                     orderEncoder.setOrder(queuedOrders.First());
+                    Console.WriteLine("Sending Order {0}", queuedOrders.First().ToString());
 
 
                     // this is where i need the multicelled buffer to add the order to the buffer 
+                    MultiCellBuffer._cells.WaitOne();
+                    mcb.setOneCell(orderEncoder.getOrder());
+
+                    Console.WriteLine("Sent Order");
 
                     //start time stamp for order
                     orderStart[orderNumber] = DateTime.Now;
@@ -133,7 +143,7 @@ namespace CSE445_Project2_Console
             //create new order;
             currentOrder.setnoRooms(roomDemand);
             currentOrder.setID(senderId.ToString());
-            currentOrder.setCardNo(senderId + 100);
+            currentOrder.setCardNo(senderId + 5000);
             currentOrder.setPrice((double)newPrice);
 
             //add new order to pending list
@@ -142,8 +152,8 @@ namespace CSE445_Project2_Console
             //reset current order
             currentOrder = new OrderClass();
 
-            Console.WriteLine("Received : {0}", newPrice);
-            Console.WriteLine("Sender id = {0}", senderId);
+            //Console.WriteLine("Received : {0}", newPrice);
+            //Console.WriteLine("Sender id = {0}", senderId);
 
 
         }
@@ -154,7 +164,7 @@ namespace CSE445_Project2_Console
         {
 
             // trace events caught
-            Console.WriteLine("Order {0}", confirmedOrder.getID(), " caught");
+            Console.WriteLine("Order {0} caught", confirmedOrder.getID());
 
             //only attempt to move order from sent to confirmed after making sure
             //the order sender id matches the thread sender id

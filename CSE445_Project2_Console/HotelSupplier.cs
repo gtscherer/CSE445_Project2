@@ -62,7 +62,7 @@ namespace CSE445_Project2_Console
 
                 // not sure whether we really would like to keep it this way
                 Int32 newPrice = price_model.scalePrice(randomNumber);
-                Thread.Sleep(50);
+                Thread.Sleep(500);
                 Console.WriteLine("New Price is {0}", newPrice);
 
                 // is there a lower price available?
@@ -99,9 +99,13 @@ namespace CSE445_Project2_Console
         {
             String[] orderString = new String[1]; 
             orderString[0] = buffer.getOneCell();
+            MultiCellBuffer._cells.Release();
+            Decoder dec = new Decoder(orderString[0]);
+
+
             this.setOrder(orderString);
             // trace events caught
-            Console.WriteLine("Order {0}", orderString[0], " received");
+            Console.WriteLine("Order {0}", dec.getOrder().ToString(), " received");
 
         }
 

@@ -204,6 +204,10 @@ namespace CSE445_Project2_Console
 
         public void printTimes()
         {
+            while (confirmedOrders.Count < 10)
+            {
+                Thread.Sleep(50);
+            }
             //Thread.SpinWait(2000);
             Console.WriteLine("\nThread Number: {0}", senderId);
             for (int i = 0; i < confirmedOrders.Count; i++)

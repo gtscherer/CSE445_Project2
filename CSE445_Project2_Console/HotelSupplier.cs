@@ -97,7 +97,8 @@ namespace CSE445_Project2_Console
 
             }
 
-            // get start time
+            //print order times and total running time
+            printAgencyTimes();
             DateTime after = DateTime.Now;
             Console.WriteLine(after);
             long ticks = after.Ticks - now.Ticks;
@@ -112,10 +113,7 @@ namespace CSE445_Project2_Console
             Console.ReadLine();
             printOrders();
 
-            //print times
-            Console.WriteLine("PRESS ENTER to print time information...");
-            Console.ReadLine();
-            printAgencyTimes();
+            
             
         }
 

@@ -101,15 +101,17 @@ namespace CSE445_Project2_Console
             Console.WriteLine("Total runtime {0} seconds ", seconds);
 
            
-            //print times
-            printAgencyTimes();
+            
 
             //option to print orders
             Console.WriteLine("PRESS ENTER to print ORDER information...");
             Console.ReadLine();
             printOrders();
-            
 
+            //print times
+            Console.WriteLine("PRESS ENTER to print time information...");
+            Console.ReadLine();
+            printAgencyTimes();
             
         }
 

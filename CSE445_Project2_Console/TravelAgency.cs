@@ -214,7 +214,8 @@ namespace CSE445_Project2_Console
                 double seconds = TimeSpan.FromTicks(ticks).TotalSeconds;
                 Console.WriteLine("Order {0}:       Total Time: {1} Seconds", confirmedOrders[i].getOrderId(), seconds);
             }
-            long ticks2 = orderFinish[confirmedOrders.Count-1].Ticks - orderStart[0].Ticks;
+            long ticks2;
+            ticks2 = orderFinish[confirmedOrders.Count - 0].Ticks - orderStart[0].Ticks;
             double seconds2 = TimeSpan.FromTicks(ticks2).TotalSeconds;
             Console.WriteLine("Total time from submission of first order to last confirmation: {0}", seconds2);
 

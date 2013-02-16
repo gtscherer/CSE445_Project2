@@ -204,22 +204,26 @@ namespace CSE445_Project2_Console
 
         public void printTimes()
         {
-            while (confirmedOrders.Count < 10)
-            {
-                Thread.Sleep(50);
-            }
             //Thread.SpinWait(2000);
-            Console.WriteLine("\nThread Number: {0}", senderId);
+            Console.WriteLine("\nThread Number: {0} Order Processing Times", senderId);
             for (int i = 0; i < confirmedOrders.Count; i++)
             {
                 long ticks = orderFinish[i].Ticks - orderStart[i].Ticks;
                 double seconds = TimeSpan.FromTicks(ticks).TotalSeconds;
                 Console.WriteLine("Order {0}:       Total Time: {1} Seconds", confirmedOrders[i].getOrderId(), seconds);
             }
-            long ticks2;
-            ticks2 = orderFinish[confirmedOrders.Count - 1].Ticks - orderStart[0].Ticks;
-            double seconds2 = TimeSpan.FromTicks(ticks2).TotalSeconds;
-            Console.WriteLine("Total time from submission of first order to last confirmation: {0}", seconds2);
+
+
+            if (confirmedOrders.Count > 0)
+            {
+                long ticks2 = orderFinish[confirmedOrders.Count - 1].Ticks - orderStart[0].Ticks;
+                double seconds2 = TimeSpan.FromTicks(ticks2).TotalSeconds;
+                Console.WriteLine("Total time from submission of first order to last confirmation: {0}", seconds2);
+            }
+            else
+            {
+                Console.WriteLine("There were no orders confirmed");
+            }
 
         }
 

@@ -96,7 +96,7 @@ namespace CSE445_Project2_Console
                 {
                     //encode the first order in line
                     orderEncoder.setOrder(queuedOrders.First());
-                    Console.WriteLine("Sending Order ({0}) To Hotel Supplier", queuedOrders.First().ToString());
+                    Console.WriteLine("Sending ({0}) To Hotel Supplier", queuedOrders.First().ToString());
                     //move the order from queued to sent
                     sentOrders.Add(queuedOrders.First());
                     queuedOrders.RemoveAt(0);
@@ -190,7 +190,7 @@ namespace CSE445_Project2_Console
                         orderFinish[s] = DateTime.Now;
                         
                         //move from sent orders to confirmed orders
-                        confirmedOrders.Add(sentOrders.ElementAt(s));
+                        confirmedOrders.Add(confirmedOrder);
                         // trace events caught
 
                         //sentOrders.RemoveAt(s); i will not remove the confirmed order from s in order to
@@ -207,7 +207,7 @@ namespace CSE445_Project2_Console
         public void printTimes()
         {
             //Thread.SpinWait(2000);
-            Console.WriteLine("Thread Number: {0}", senderId);
+            Console.WriteLine("\nThread Number: {0}", senderId);
             for (int i = 0; i < confirmedOrders.Count; i++)
             {
                 long ticks = orderFinish[i].Ticks - orderStart[i].Ticks;
@@ -217,6 +217,52 @@ namespace CSE445_Project2_Console
             long ticks2 = orderFinish[confirmedOrders.Count-1].Ticks - orderStart[0].Ticks;
             double seconds2 = TimeSpan.FromTicks(ticks2).TotalSeconds;
             Console.WriteLine("Total time from submission of first order to last confirmation: {0}", seconds2);
+
+        }
+
+        public void printOrders()
+        {
+            
+            Console.WriteLine("\nTHREAD NUMBER: {0}", senderId);
+            Console.WriteLine("\nQueued Orders:");
+            if (queuedOrders.Count == 0)
+            {
+                Console.WriteLine("No Queued Orders...");
+            }
+            else
+            {
+                for (int i = 0; i < queuedOrders.Count; i++)
+                {
+                    Console.WriteLine("{0}", queuedOrders[i].ToString2());
+                }
+            }
+
+            Console.WriteLine("\nSent Orders:");
+            if (sentOrders.Count == 0)
+            {
+                Console.WriteLine("No Sent Orders...");
+            }
+            else
+            {
+                for (int i = 0; i < sentOrders.Count; i++)
+                {
+                    Console.WriteLine("{0}", sentOrders[i].ToString2());
+                }
+            }
+
+            Console.WriteLine("\nConfirmed Orders:");
+            if (confirmedOrders.Count == 0)
+            {
+                Console.WriteLine("No Confirmed Orders...");
+            }
+            else
+            {
+                for (int i = 0; i < confirmedOrders.Count; i++)
+                {
+                    Console.WriteLine("{0}", confirmedOrders[i].ToString2());
+                }
+            }
+            
 
         }
     }

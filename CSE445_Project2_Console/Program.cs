@@ -37,6 +37,7 @@ namespace CSE445_Project2_Console
                 obitz[i].setId(idNum + i);
                 HotelSupplier.priceCut += new HotelSupplier.priceCutEvent(obitz[i].priceCutEvent);
                 HotelSupplier.printAgencyTimes += new HotelSupplier.printTimesEvent(obitz[i].printTimes);
+                HotelSupplier.printOrders += new HotelSupplier.printOrdersEvent(obitz[i].printOrders);
                 agencies[i] = new Thread(new ThreadStart(obitz[i].agencyFunc));
                 OrderProcessing.orderConfirmation += new OrderProcessing.orderConfirmationEvent(obitz[i].orderConfirmationEvent);
                 agencies[i].Name = (i + 1).ToString();

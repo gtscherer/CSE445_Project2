@@ -23,8 +23,10 @@ namespace CSE445_Project2_Console
         private Int32 price;
         public delegate void priceCutEvent(Int32 newPrice, Int32 price);
         public delegate void printTimesEvent();
+        public delegate void printOrdersEvent();
         public static event priceCutEvent priceCut;
         public static event printTimesEvent printAgencyTimes;
+        public static event printOrdersEvent printOrders;
         private int[] numRooms;
         private int[] numPriceCuts;
         private DateTime now;
@@ -55,7 +57,7 @@ namespace CSE445_Project2_Console
 
            
             // the HotelSupplier will be active until 10 price cuts have been reached
-            for (Int32 i = 0; i < 11; )
+            for (Int32 i = 0; i < 10; )
             {
                 //Console.WriteLine("For loop start: {0}", i);
                 // get random number to scale price
@@ -65,8 +67,12 @@ namespace CSE445_Project2_Console
 
                 // not sure whether we really would like to keep it this way
                 Int32 newPrice = price_model.scalePrice(randomNumber);
-                Thread.Sleep(500);
-                Console.WriteLine("New Price is {0}", newPrice);
+                
+
+                
+               
+                    Console.WriteLine("New Price is {0}", newPrice);
+                
 
                 // is there a lower price available?
                 if (newPrice < price)
@@ -81,7 +87,7 @@ namespace CSE445_Project2_Console
                     i++;
                 }
                 price = newPrice;
-
+                Thread.Sleep(500);
 
                 // not clear how orchestration should look like...
 
@@ -94,10 +100,17 @@ namespace CSE445_Project2_Console
             double seconds = TimeSpan.FromTicks(ticks).TotalSeconds;
             Console.WriteLine("Total runtime {0} seconds ", seconds);
 
+           
+            //print times
             printAgencyTimes();
+
+            //option to print orders
+            Console.WriteLine("PRESS ENTER to print ORDER information...");
+            Console.ReadLine();
+            printOrders();
             
 
-            Console.ReadLine();
+            
         }
 
         // Need an event handler to catch a buffer event for new order
@@ -111,7 +124,7 @@ namespace CSE445_Project2_Console
 
             this.setOrder(orderString);
             // trace events caught
-            Console.WriteLine("Order ({0}) Received By Hotel Supplier", dec.getOrder().ToString());
+            Console.WriteLine("({0}) Received By Hotel Supplier", dec.getOrder().ToString());
 
         }
 

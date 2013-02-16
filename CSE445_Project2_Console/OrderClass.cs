@@ -75,9 +75,16 @@ namespace CSE445_Project2_Console
             return amount;           //Possibly needs synchronization
         }
 
+        //print shorter details for console
         public override string ToString()
         {
             return "Agency: " + getID() + " Order ID: " + getOrderId() /*+ " Card #: " + getCardNo()*/ + " Rooms:  " + getnoRooms() +" Price: " + getPrice(); /*+ " Amount: " + getAmt();*/
+        }
+
+        //print full details
+        public string ToString2()
+        {
+            return "Agency: " + getID() + " Order ID: " + getOrderId() + " Card #: " + getCardNo() + " Rooms:  " + getnoRooms() + " Price: " + getPrice() + " Amount: " + getAmt();
         }
 
         public override bool Equals(object obj)

@@ -63,7 +63,7 @@ namespace CSE445_Project2_Console
             amount = (double)order.getnoRooms() * order.getPrice() + tax + locationCharge;
             order.setAmt(amount);
 
-            // inform agency here - what approach will we choose?
+            // inform agency of completed order
             if(orderConfirmation != null)
                 orderConfirmation(order);
 

@@ -15,9 +15,6 @@ namespace CSE445_Project2_Console
          * setID and getID: methods allow the users to write and read senderId member.
          * setCardNo and getCardNo: methods allow the users to write and read cardNo member.
          * setAmt and getAmt: methods allow the users to write and read Amount member.
-         * 
-         * You must decide if these methods need to be synchronized. 
-         * The instances creaded from this class are of the OrderObject.
          */
         private int cardNo;
         private double amount;

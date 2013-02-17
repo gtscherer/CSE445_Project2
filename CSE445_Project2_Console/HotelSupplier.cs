@@ -38,7 +38,7 @@ namespace CSE445_Project2_Console
 
         public HotelSupplier(MultiCellBuffer buffer, int numOfAgencies)
         {
-            // let's see
+            
             this.buffer = buffer;
             price_model = new PricingModel();
             numRooms = new int[7];
@@ -59,6 +59,7 @@ namespace CSE445_Project2_Console
         public void hotelStarter()
         {
             Console.WriteLine("Hotel thread created");
+            //Connect event handler to let the hotel know when there are new orders
             MultiCellBuffer.notifyHotelOfOrder += new MultiCellBuffer.notifyHotelOfOrderEvent(this.notifyHotelOfOrder);
 
             int randomNumber = price_model.getPrice();
@@ -75,7 +76,7 @@ namespace CSE445_Project2_Console
                     // there is at least a subscriber
                     if (priceCut != null)
                     {
-                        // emit / raise event to subscribers
+                        // emit event to subscribers
                         priceCut(newPrice, price);
                         //price is cut, wait for at least one order until moving forward
                         AutoResetEvent.WaitAny(waitHandle, 30000);
@@ -87,9 +88,11 @@ namespace CSE445_Project2_Console
                 Thread.Sleep(1000);
                 randomNumber = price_model.changePrice();
             }
-            //Wait for all the Travel Agencies orders to finish
+
+            //Wait for all the Travel Agencys'  orders to finish
             while (counter < totalAgencies * priceCuts)
                 Thread.Sleep(10);
+
             //print order times and total running time
             DateTime after = DateTime.Now;
             Console.WriteLine(after);
@@ -110,6 +113,7 @@ namespace CSE445_Project2_Console
         public void notifyHotelOfOrder(bool cellsOccupied)
         {
             String[] orderString = new String[1]; 
+            //get an order from the buffer, and then release the semaphore
             orderString[0] = buffer.getOneCell();
             MultiCellBuffer._cells.Release();
             Decoder dec = new Decoder(orderString[0]);
@@ -122,7 +126,7 @@ namespace CSE445_Project2_Console
             waitHandle[0].Set();
         }
 
-
+        //Process a recieved order
         public void setOrder(String[] orderString)
         {
 

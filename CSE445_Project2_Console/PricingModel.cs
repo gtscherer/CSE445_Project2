@@ -27,7 +27,6 @@ namespace CSE445_Project2_Console
                 {
                     priceTable[i] += 20;
                 }
-                //priceTable[i] = i;
 
             }
             dayOfWeek = 0;

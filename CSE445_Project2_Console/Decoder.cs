@@ -17,11 +17,14 @@ namespace CSE445_Project2_Console
         {
             s = new OrderClass();
         }
+
+        //Easy constructor
         public Decoder(String str)
         {
             s = new OrderClass();
             setOrder(str);
         }
+
         public OrderClass getOrder()
         {
             return s;

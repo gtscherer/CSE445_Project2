@@ -19,6 +19,8 @@ namespace CSE445_Project2_Console
              */
 
             MultiCellBuffer buffer = new MultiCellBuffer();
+
+            //Get number of travel agencies from the user
             Console.WriteLine("Program started.");
             Console.WriteLine("Please enter the number of threads you would like to test:");
             int N = 0;
@@ -33,19 +35,17 @@ namespace CSE445_Project2_Console
                     Console.WriteLine("Try entering a different number. Needs to be an integer.");
                 }
             }
+            //Instantiate our hotel supplier
             HotelSupplier hotel = new HotelSupplier(buffer, N);
 
-                     
+            //Build our travel agencies         
             const int idNum = 100;
             TravelAgency[] obitz = new TravelAgency[N];
-            
-            //MultiCellBuffer.notifyHotelOfOrder += new MultiCellBuffer.notifyHotelOfOrderEvent( hotel function to start and stop buffer polling );
-
             Thread[] agencies = new Thread[N];
 
+            //Instantiate our travel agencies, attach the event handlers and start the threads
             for(int i = 0; i < N; ++i)
             {
-                //Console.WriteLine("Execution {0}", i);
                 obitz[i] = new TravelAgency();
                 obitz[i].setId(idNum + i);
                 HotelSupplier.priceCut += new HotelSupplier.priceCutEvent(obitz[i].priceCutEvent);
@@ -57,32 +57,12 @@ namespace CSE445_Project2_Console
                 agencies[i].Start();
             }
 
+            //Begin the Hotel Supplier thread which will control our main program flow
             Thread hotelThread = new Thread(new ThreadStart(hotel.hotelStarter));
             hotelThread.Start();
-
-            
-   
-
-
-            //Console.WriteLine("does it work: " + testOrder());
-            //Console.ReadLine();
-
-            
-            /*
-            Thread hotelThread = new Thread(new ThreadStart(hotel.hotelFunc));
-            hotelThread.Start();
-            TravelAgency orbitz = new TravelAgency();
-            HotelSupplier.priceCut += new priceCutEvent(orbitz.roomSale);
-            Thread[] agencies = new Thread[N];
-            for(int i = 0; i < 3; i++)
-            {
-                agencies[i] = new Thread(new ThreadStart(orbitz.agencyFunc))
-                agencies[i].Name = (i + 1).ToString();
-                agencies[i].Start();
-            }
-            */
         }
 
+        //Test method to verify encode/decode service with orderclass
         static Boolean testOrder()
         {
             OrderClass order = new OrderClass();

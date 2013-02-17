@@ -17,19 +17,9 @@ namespace CSE445_Project2_Console
          * You cannot use a queue for the buffer, which is a different data structure. 
          * Note: the semaphore will allow an agency to gain the right to write into the buffer.
          * But, the HotelSupplier can still read at the same time. Synchronization is also required.
-         * 
-         * thanks
-         * 
-         * 
          */
 
-        /*
-         * Starting point for the multicell buffer.
-         * Might need changes when we integrate to meet the synchronization requirement
-         * Cycle method for the getOneCell should prevent any threads from starving
-         * Needs testing once we have a travel agency class put together
-         */
-
+        //Buffer size
         static int numberOfCells = 3;
 
         //Semaphore allows travel agency to get access, hotel supplier will release when order is processed
@@ -39,9 +29,12 @@ namespace CSE445_Project2_Console
         public delegate void notifyHotelOfOrderEvent(bool cellsOccupied);
         public static event notifyHotelOfOrderEvent notifyHotelOfOrder;
  
+        //Buffer storage
         static string[] cells = new string[numberOfCells];
+        //Counter to track buffer position
         static int counter = 0;
 
+        //Place an item into the buffer
         public void setOneCell(String order)
         {           
                 bool success = false;
@@ -65,6 +58,7 @@ namespace CSE445_Project2_Console
                 }
                 else
                 {
+                    //Alert the hotel that there is a new order in the buffer
                     notifyHotelOfOrder(true);
                 }
         }

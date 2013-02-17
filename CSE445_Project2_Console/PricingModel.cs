@@ -22,7 +22,7 @@ namespace CSE445_Project2_Console
             priceTable = new int[7];
             for (int i = 0; i < priceTable.Length; ++i)
             {
-                priceTable[i] = (i + (i/2) - (i * 3)) + 107;
+                priceTable[i] = (i + (i/2) - (i * 3)) + 107;  //builds a pricing table based on the current i
                 if (i > 4)
                 {
                     priceTable[i] += 20;
@@ -34,28 +34,25 @@ namespace CSE445_Project2_Console
         }
         public int changePrice()
         {
-            int price = priceTable[dayOfWeek];
-
-
-
+            int price = priceTable[dayOfWeek];                      //increments the day and returns the current price
             dayOfWeek = (dayOfWeek + 1) % priceTable.Length;
             return price;
         }
         public int scalePrice(int num)
         {
-            return num * 100/80;
+            return num * 100/80;   //scales price by 20%
         }
         public int cutPrice(int num)
         {
-            return num * 90/100;
+            return num * 90/100;  //cuts price by 10%
         }
         public int getPrice()
         {
-            return priceTable[dayOfWeek];
+            return priceTable[dayOfWeek];  //returns price
         }
         public static int getCurrentPrice()
         {
-            return currentPrice;
+            return currentPrice;  
         }
         public void incrementDay()
         {

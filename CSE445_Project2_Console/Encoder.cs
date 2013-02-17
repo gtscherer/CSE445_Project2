@@ -21,32 +21,31 @@ namespace CSE445_Project2_Console
         }
         public Encoder(OrderClass s)
         {
-            setOrder(s);
+            setOrder(s);  //constructs an encoder with a class
         }
         public String getOrder(){
-            return order;   
+            return order;   //returns encrypted string
         }
         public void setOrder(OrderClass s)
         {
             StringBuilder temp = new StringBuilder();
-            temp.Append(s.getAmt().ToString());
+            temp.Append(s.getAmt().ToString());  //Appends amount to string
             temp.Append(" ");
-            temp.Append(s.getCardNo().ToString());
+            temp.Append(s.getCardNo().ToString()); //Appends card number to string
             temp.Append(" ");
-            /* This is commented out because I haven't determined what senderID's type is. */
-            temp.Append(s.getID().ToString());
+            temp.Append(s.getID().ToString()); //Appends ID to string
             temp.Append(" ");
-            temp.Append(s.getOrderId().ToString());
+            temp.Append(s.getOrderId().ToString()); //Appends orderId to string
             temp.Append(" ");
-            temp.Append(s.getnoRooms().ToString());
+            temp.Append(s.getnoRooms().ToString()); //Appends number of rooms to string
             temp.Append(" ");
-            temp.Append(s.getPrice().ToString());
+            temp.Append(s.getPrice().ToString());  //Appends price per room to string
             temp.Append(" ");
             
              
-            order = temp.ToString();
-            EncryptionService.ServiceClient serviceClient = new EncryptionService.ServiceClient();
-            order = serviceClient.Encrypt(order);
+            order = temp.ToString(); //builds string
+            EncryptionService.ServiceClient serviceClient = new EncryptionService.ServiceClient(); //Instantiates encryption service
+            order = serviceClient.Encrypt(order);  //encrypts string
         }
     }
 

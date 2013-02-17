@@ -219,6 +219,7 @@ namespace CSE445_Project2_Console
                 long ticks = orderFinish[i].Ticks - orderStart[i].Ticks;
                 double seconds = TimeSpan.FromTicks(ticks).TotalSeconds;
                 Console.WriteLine("Order {0}:       Total Time: {1} Seconds", confirmedOrders[i].getOrderId(), seconds);
+                
             }
 
 
@@ -227,6 +228,7 @@ namespace CSE445_Project2_Console
                 long ticks2 = orderFinish[confirmedOrders.Count - 1].Ticks - orderStart[0].Ticks;
                 double seconds2 = TimeSpan.FromTicks(ticks2).TotalSeconds;
                 Console.WriteLine("Total time from submission of first order to last confirmation: {0}", seconds2);
+                Console.WriteLine("Average Response Time: {0}", seconds2 / confirmedOrders.Count);
             }
             else
             {

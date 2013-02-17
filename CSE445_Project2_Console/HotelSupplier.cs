@@ -65,21 +65,10 @@ namespace CSE445_Project2_Console
             // the HotelSupplier will be active until 10 price cuts have been reached
             for (Int32 i = 0; i < priceCuts; )
             {
-                //Console.WriteLine("For loop start: {0}", i);
-                // get random number to scale price
-                //Random rand = new Random();
-               
-
-
-                // not sure whether we really would like to keep it this way
                 Int32 newPrice = price_model.cutPrice(randomNumber);
-
                 price = randomNumber;
-
                 Console.WriteLine("Old Price = {0}", randomNumber);
                 Console.WriteLine("New Price is {0}", newPrice);
-                
-
                 // is there a lower price available?
                 if (newPrice < price)
                 {
@@ -87,24 +76,20 @@ namespace CSE445_Project2_Console
                     if (priceCut != null)
                     {
                         // emit / raise event to subscribers
-
                         priceCut(newPrice, price);
+                        //price is cut, wait for at least one order until moving forward
                         AutoResetEvent.WaitAny(waitHandle, 30000);
                     }
-                    // increase the number of price cuts
+                    // increase the count of price cuts
                     i++;
                 }
                 price = newPrice;
                 Thread.Sleep(1000);
                 randomNumber = price_model.changePrice();
-                // not clear how orchestration should look like...
-
             }
             //Wait for all the Travel Agencies orders to finish
             while (counter < totalAgencies * priceCuts)
                 Thread.Sleep(10);
-            
-
             //print order times and total running time
             DateTime after = DateTime.Now;
             Console.WriteLine(after);
@@ -119,9 +104,6 @@ namespace CSE445_Project2_Console
             Console.ReadLine();
             printAgencyTimes();
             Console.ReadLine();
-
-            
-            
         }
 
         // Need an event handler to catch a buffer event for new order
@@ -171,10 +153,7 @@ namespace CSE445_Project2_Console
         }
 
         private static void Worker(object order) {
-
             OrderProcessing p = new OrderProcessing((OrderClass)order);
-
-
         }
 
 

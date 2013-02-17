@@ -3,3 +3,4 @@ C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\CSE445_Proj
 C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\CSE445_Project2_Console\bin\Release\CSE445_Project2_Console.pdb
 C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\CSE445_Project2_Console\obj\x86\Release\CSE445_Project2_Console.exe
 C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\CSE445_Project2_Console\obj\x86\Release\CSE445_Project2_Console.pdb
+C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\CSE445_Project2_Console\obj\x86\Release\CSE445_Project2_Console.csprojResolveAssemblyReference.cache

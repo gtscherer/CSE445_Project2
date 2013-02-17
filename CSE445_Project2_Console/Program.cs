@@ -22,7 +22,7 @@ namespace CSE445_Project2_Console
             Console.WriteLine("Program started.");
             Console.WriteLine("Please enter the number of threads you would like to test:");
             int N = 0;
-            while (N == 0)
+            while (N <= 0)
             {
                 try         
                 {

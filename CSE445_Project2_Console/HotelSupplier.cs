@@ -32,8 +32,11 @@ namespace CSE445_Project2_Console
         private int[] numPriceCuts;
         private DateTime now;
         private MultiCellBuffer buffer;
+        private int counter = 0;
+        private int totalAgencies;
+        private int priceCuts = 10;
 
-        public HotelSupplier(MultiCellBuffer buffer)
+        public HotelSupplier(MultiCellBuffer buffer, int numOfAgencies)
         {
             // let's see
             this.buffer = buffer;
@@ -43,6 +46,7 @@ namespace CSE445_Project2_Console
             // get start time
             now = DateTime.Now;
             Console.WriteLine(now);
+            totalAgencies = numOfAgencies;
             for (int i = 0; i < 7; ++i)
             {
                 numRooms[i] = 50;
@@ -59,7 +63,7 @@ namespace CSE445_Project2_Console
 
             int randomNumber = price_model.getPrice();
             // the HotelSupplier will be active until 10 price cuts have been reached
-            for (Int32 i = 0; i < 10; )
+            for (Int32 i = 0; i < priceCuts; )
             {
                 //Console.WriteLine("For loop start: {0}", i);
                 // get random number to scale price
@@ -96,6 +100,10 @@ namespace CSE445_Project2_Console
                 // not clear how orchestration should look like...
 
             }
+            //Wait for all the Travel Agencies orders to finish
+            while (counter < totalAgencies * priceCuts)
+                Thread.Sleep(10);
+            
 
             //print order times and total running time
             DateTime after = DateTime.Now;
@@ -110,6 +118,7 @@ namespace CSE445_Project2_Console
             Console.WriteLine("PRESS ENTER AGAIN to print agency order times...");
             Console.ReadLine();
             printAgencyTimes();
+            Console.ReadLine();
 
             
             
@@ -125,6 +134,7 @@ namespace CSE445_Project2_Console
 
             price_model.scalePrice(Convert.ToInt32(dec.getOrder().getPrice()));
             this.setOrder(orderString);
+            
             // trace events caught
             Console.WriteLine("({0}) Received By Hotel Supplier", dec.getOrder().ToString());
             waitHandle[0].Set();
@@ -152,6 +162,9 @@ namespace CSE445_Project2_Console
             // need to call OrderProcessing
             thread[i] = new Thread(new ParameterizedThreadStart(Worker));
             thread[i].Start(order);
+
+            //Increment order counter
+            counter++;
 
             }
 

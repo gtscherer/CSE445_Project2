@@ -20,8 +20,8 @@ namespace CSE445_Project2_Console
 
             MultiCellBuffer buffer = new MultiCellBuffer();
             Console.WriteLine("Program started.");
-            const int N = 10;
-            HotelSupplier hotel = new HotelSupplier(buffer);
+            const int N = 4;
+            HotelSupplier hotel = new HotelSupplier(buffer, N);
 
                      
             const int idNum = 100;

@@ -71,22 +71,22 @@ namespace CSE445_Project2_Console
         public void setId(int a)
         {
             senderId = a;
+            randDemand = new Random(a * System.DateTime.Now.GetHashCode());
         }
 
         //This is the actual thread where it attempts to add orders tot he buffer
         public void agencyFunc()
         {
             Console.WriteLine("Agency function thread created, my ID is: {0}", senderId);
-
+            bool go = true;
             //using a while(true) because to continuously poll the queued orders so
             //whenever one is added it attempts to add it to the buffer
-            while (true)
+            while (go)
             {
-                //demand always changing
-                roomDemand = randDemand.Next(50, 100);
+                
 
                 //commented out sleep because all threads were syncing up and generating the same random demand
-                //Thread.Sleep(50);
+                Thread.Sleep(50);
 
                 
 
@@ -94,6 +94,8 @@ namespace CSE445_Project2_Console
                 //check to see if any orders have been added to the queue
                 if (queuedOrders.Count != 0 && startNumber < 10)
                 {
+                    //demand always changing
+                    roomDemand = randDemand.Next(50, 100);
                     //encode the first order in line
                     orderEncoder.setOrder(queuedOrders.First());
                     Console.WriteLine("Sending ({0}) To Hotel Supplier", queuedOrders.First().ToString());
@@ -107,16 +109,20 @@ namespace CSE445_Project2_Console
                     mcb.setOneCell(orderEncoder.getOrder());
 
                     //start time stamp for order
-                    
+
 
                     //Console.WriteLine("Order Sent! Thread: {0}, Rooms: {1}, Card: {2}", queuedOrders.First().getID(), queuedOrders.First().getnoRooms(), queuedOrders.First().getCardNo());
 
 
-                    
+
                     //increment orderNumber for startTime of next order
                     startNumber++;
 
                 }
+                else if (startNumber >= 10)
+                    go = false;
+
+
             }
         }
 

@@ -98,20 +98,18 @@ namespace CSE445_Project2_Console
             }
 
             //print order times and total running time
-            printAgencyTimes();
             DateTime after = DateTime.Now;
             Console.WriteLine(after);
             long ticks = after.Ticks - now.Ticks;
             double seconds = TimeSpan.FromTicks(ticks).TotalSeconds;
             Console.WriteLine("Total runtime {0} seconds ", seconds);
-
-           
-            
-
             //option to print orders
             Console.WriteLine("PRESS ENTER to print ORDER information...");
             Console.ReadLine();
             printOrders();
+            Console.WriteLine("PRESS ENTER AGAIN to print agency order times...");
+            Console.ReadLine();
+            printAgencyTimes();
 
             
             

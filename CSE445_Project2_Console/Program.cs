@@ -20,7 +20,7 @@ namespace CSE445_Project2_Console
 
             MultiCellBuffer buffer = new MultiCellBuffer();
             Console.WriteLine("Program started.");
-            const int N = 3;
+            const int N = 10;
             HotelSupplier hotel = new HotelSupplier(buffer);
 
                      
@@ -30,7 +30,8 @@ namespace CSE445_Project2_Console
             //MultiCellBuffer.notifyHotelOfOrder += new MultiCellBuffer.notifyHotelOfOrderEvent( hotel function to start and stop buffer polling );
 
             Thread[] agencies = new Thread[N];
-            for(int i = 0; i < 3; ++i)
+
+            for(int i = 0; i < N; ++i)
             {
                 //Console.WriteLine("Execution {0}", i);
                 obitz[i] = new TravelAgency();

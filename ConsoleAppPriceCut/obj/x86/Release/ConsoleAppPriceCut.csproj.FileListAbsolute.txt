@@ -1,5 +1,4 @@
 C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\ConsoleAppPriceCut\bin\Release\ConsoleAppPriceCut.exe
 C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\ConsoleAppPriceCut\bin\Release\ConsoleAppPriceCut.pdb
-C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Release\ConsoleAppPriceCut.csprojResolveAssemblyReference.cache
 C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Release\ConsoleAppPriceCut.exe
 C:\Users\Gregg\Documents\Visual Studio 2012\Projects\CSE445_Project2\ConsoleAppPriceCut\obj\x86\Release\ConsoleAppPriceCut.pdb

@@ -20,7 +20,19 @@ namespace CSE445_Project2_Console
 
             MultiCellBuffer buffer = new MultiCellBuffer();
             Console.WriteLine("Program started.");
-            const int N = 4;
+            Console.WriteLine("Please enter the number of threads you would like to test:");
+            int N = 0;
+            while (N == 0)
+            {
+                try         
+                {
+                    N = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (FormatException a)
+                {
+                    Console.WriteLine("Try entering a different number. Needs to be an integer.");
+                }
+            }
             HotelSupplier hotel = new HotelSupplier(buffer, N);
 
                      
